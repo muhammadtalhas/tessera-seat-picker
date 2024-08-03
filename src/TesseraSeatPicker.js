@@ -1,25 +1,20 @@
-// src/TesseraSeatPicker.js
 import React from 'react';
 import SeatPicker from 'react-seat-picker';
 import PropTypes from 'prop-types';
-import './TesseraSeatPicker.css';
 
 const TesseraSeatPicker = ({
   rows,
-  maxReservableSeats,
-  alpha,
+  maxReservableSeats = 0,
+  alpha = false,
   addSeatCallback,
-  removeSeatCallback,
-  visible,
-  selectedByDefault,
-  loading,
+  removeSeatCallback = null,
+  visible = true,
+  selectedByDefault = false,
+  loading = false,
   ...props
 }) => {
   return (
-    <div className="seats">
-        <div className="screens">
-          <h3 className="screen">Stage</h3>
-        </div>
+    <div className="tessera-seat-picker">
       <SeatPicker
         rows={rows}
         maxReservableSeats={maxReservableSeats}
@@ -45,15 +40,6 @@ TesseraSeatPicker.propTypes = {
   visible: PropTypes.bool,
   selectedByDefault: PropTypes.bool,
   loading: PropTypes.bool,
-};
-
-TesseraSeatPicker.defaultProps = {
-  maxReservableSeats: 0,
-  alpha: false,
-  removeSeatCallback: null,
-  visible: true,
-  selectedByDefault: false,
-  loading: false,
 };
 
 export default TesseraSeatPicker;

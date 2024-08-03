@@ -1,6 +1,8 @@
+// src/TesseraSeatPicker.js
 import React from 'react';
 import SeatPicker from 'react-seat-picker';
 import PropTypes from 'prop-types';
+import './TesseraSeatPicker.css';
 
 const TesseraSeatPicker = ({
   rows,
@@ -14,7 +16,10 @@ const TesseraSeatPicker = ({
   ...props
 }) => {
   return (
-    <div className="tessera-seat-picker">
+    <div className="seats">
+      <div className="screens">
+        <h3 className="screen">Stage</h3>
+      </div>
       <SeatPicker
         rows={rows}
         maxReservableSeats={maxReservableSeats}

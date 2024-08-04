@@ -1,4 +1,3 @@
-// src/TesseraSeatPicker.js
 import React from 'react';
 import SeatPicker from 'react-seat-picker';
 import PropTypes from 'prop-types';
@@ -35,9 +34,20 @@ const TesseraSeatPicker = ({
   );
 };
 
-// Define PropTypes to match those of SeatPicker
+// Custom PropTypes validator to ensure each seat has an id
+const seatShape = PropTypes.shape({
+  id: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
+  number: PropTypes.number.isRequired,
+  tooltip: PropTypes.string,
+  isReserved: PropTypes.bool,
+});
+
+const rowShape = PropTypes.arrayOf(
+  PropTypes.oneOfType([seatShape, PropTypes.oneOf([null])])
+);
+
 TesseraSeatPicker.propTypes = {
-  rows: PropTypes.array.isRequired,
+  rows: PropTypes.arrayOf(rowShape).isRequired,
   maxReservableSeats: PropTypes.number,
   alpha: PropTypes.bool,
   addSeatCallback: PropTypes.func.isRequired,

@@ -12,12 +12,16 @@ const TesseraSeatPicker = ({
   visible = true,
   selectedByDefault = false,
   loading = false,
+  seatStyle = {},
+  stageStyle = {},
+  containerClassName = '',
+  stageClassName = '',
   ...props
 }) => {
   return (
-    <div className="seats">
-      <div className="screens">
-        <h3 className="screen">Stage</h3>
+    <div className={`seats ${containerClassName}`}>
+      <div className={`stages ${stageClassName}`} style={stageStyle}>
+        <h3 className="stage">Stage</h3>
       </div>
       <SeatPicker
         rows={rows}
@@ -55,6 +59,10 @@ TesseraSeatPicker.propTypes = {
   visible: PropTypes.bool,
   selectedByDefault: PropTypes.bool,
   loading: PropTypes.bool,
+  seatStyle: PropTypes.object, // Custom styles for seats
+  stageStyle: PropTypes.object, // Custom styles for the stage
+  containerClassName: PropTypes.string, // Custom class for the container
+  stageClassName: PropTypes.string, // Custom class for the stage
 };
 
 export default TesseraSeatPicker;
